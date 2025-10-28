@@ -1,3 +1,5 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 const student = {
     id: "sv01",
     name: "Lê Anh",
@@ -6,4 +8,3 @@ const student = {
 };
 const prinfInfo = (st) => {
 };
-export {};
