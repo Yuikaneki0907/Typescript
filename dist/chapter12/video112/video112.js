@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 //Class: Mo ta chung chung, tong quat
 class Lion {
     constructor() {
@@ -21,3 +19,4 @@ const sutu2 = new Lion();
 sutu2.name = "anhhh";
 sutu2.color = "white";
 sutu2.sleep();
+export {};

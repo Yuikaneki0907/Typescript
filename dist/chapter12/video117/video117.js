@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 console.log("Tính kế thừa");
 class Parent {
     shareHouse() {
@@ -16,3 +14,4 @@ const lee = new Child();
 lee.shareHouse();
 const ba = new Parent();
 ba.shareHouse();
+export {};

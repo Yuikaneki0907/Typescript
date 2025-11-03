@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 //object type
 const person = {
     name: "lê anh",
@@ -20,3 +18,4 @@ const printf = (person) => {
     console.log("your name is: ", person.name);
 };
 printf(person);
+export {};

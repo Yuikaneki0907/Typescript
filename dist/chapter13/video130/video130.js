@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 console.log("Generic Constraints");
 function logLength(value) {
     console.log(value.length);
@@ -43,4 +41,5 @@ const user = {
     age: 21,
 };
 getProperty(user, "name");
+export {};
 // getProperty(user, "email")

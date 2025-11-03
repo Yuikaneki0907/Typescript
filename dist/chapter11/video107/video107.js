@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 console.log("fetch API");
 const fetchUsers = async () => {
     const res = await fetch("http://localhost:8000/users");
@@ -8,3 +6,4 @@ const fetchUsers = async () => {
     console.log(data);
 };
 fetchUsers();
+export {};

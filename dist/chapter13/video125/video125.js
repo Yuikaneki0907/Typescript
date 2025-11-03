@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 console.log("Generic Function");
 function checkNumber(value) {
     return value;
@@ -17,3 +15,4 @@ const checkArrayGeneric = (arr) => {
     return arr;
 };
 const arr1 = checkArrayGeneric([1, 2, 3]);
+export {};

@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 console.log("Intersection Type");
 let username = "le anh";
 const dev = {
@@ -8,3 +6,4 @@ const dev = {
     address: "HN",
     language: "C++"
 };
+export {};

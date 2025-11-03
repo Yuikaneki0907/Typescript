@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 console.log("Interface");
 const user = {
     age: 25,
@@ -19,3 +17,4 @@ const dog = {
     name: "kin",
     kindOf: "mnb"
 };
+export {};

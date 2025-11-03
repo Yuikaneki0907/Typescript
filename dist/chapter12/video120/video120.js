@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 console.log("Tính trừu tượng");
 //abstract class
 class Animal {
@@ -17,3 +15,4 @@ class Dog extends Animal {
 }
 const myDog = new Dog("milu");
 myDog.test();
+export {};

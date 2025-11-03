@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 console.log("interface & implements");
 class NhanVien {
     constructor(id, name) {
@@ -25,3 +23,4 @@ class Bird {
 const myBird = new Bird();
 myBird.makeSound();
 myBird.doFly();
+export {};

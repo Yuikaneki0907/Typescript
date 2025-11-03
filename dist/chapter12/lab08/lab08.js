@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 class User {
     get email() {
         return this._email;
@@ -55,3 +53,4 @@ anh.addCourse("ReactJs");
 console.log("======================");
 lee.printUserInfo();
 anh.printUserInfo();
+export {};

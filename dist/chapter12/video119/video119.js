@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 console.log("Tính đa hình");
 class Dog {
     makeSound() {
@@ -17,3 +15,4 @@ const myPet = [myCat, myDog];
 myPet.forEach((animal, index) => {
     animal.makeSound();
 });
+export {};

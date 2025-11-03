@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 const tbody = document.getElementById("tbody");
 const fetchData = async () => {
     const res = await fetch("http://localhost:8000/posts");
@@ -16,3 +14,4 @@ const fetchData = async () => {
     }
 };
 fetchData();
+export {};

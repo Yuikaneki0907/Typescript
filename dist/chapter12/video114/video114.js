@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 console.log("constructor");
 class Person {
     constructor(name, age) {
@@ -13,3 +11,4 @@ class Person {
 const person1 = new Person("Lê", 21);
 person1.tell();
 const person2 = new Person();
+export {};

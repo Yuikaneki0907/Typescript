@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 console.log("Interface Generic");
 const a = {
     data: "abc"
@@ -13,3 +11,4 @@ const fetchUsers = async () => {
     };
     result.data.map(item => item.email);
 };
+export {};

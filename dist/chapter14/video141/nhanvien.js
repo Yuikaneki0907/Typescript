@@ -1,6 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-class NhanVien {
+export default class NhanVien {
     get id() {
         return this._id;
     }
@@ -13,4 +11,3 @@ class NhanVien {
         this.salary = salary;
     }
 }
-exports.default = NhanVien;

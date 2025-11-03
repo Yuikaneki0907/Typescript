@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 console.log("Thuộc tính và phương thức");
 class SinhVien {
     sleep() {
@@ -12,3 +10,4 @@ sv1.id = "09";
 sv1.sleep();
 const sv2 = new SinhVien();
 sv2.sleep();
+export {};
