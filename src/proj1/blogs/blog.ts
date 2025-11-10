@@ -1,0 +1,91 @@
+import { createBlog } from "./blog.create.js";
+import { attachActionDelete, deleteBlog } from "./blog.delete.js";
+import { editBlog, getDataEdit } from "./blog.edit.js";
+
+interface IBlog {
+  id: number;
+  title: string;
+  author: string;
+  content: string;
+}
+
+const reloadTable = (blog: IBlog) => {
+  const tableBlog = document.querySelector("#tableBlog tbody");
+
+  const newRow = document.createElement("tr");
+
+  if (tableBlog) {
+    newRow.innerHTML = `
+    <tr>
+                        <th >${blog.id}</th>
+                        <th >${blog.title}</th>
+                        <th >${blog.author}</th>
+                        <th >${blog.content}</th>
+                        <th >
+                        <button class = "btn btn-warning btn-edit" data-edit-id="${blog.id}"
+                        data-title = "${blog.title}"
+                        data-author = "${blog.author}"
+                        data-content = "${blog.content}"
+      data-bs-toggle="modal"
+      data-bs-target="#modalEditBlog">Edit</button>
+                        <button class = "btn btn-danger btn-delete" data-id="${blog.id}">Delete</button>
+                        </th>
+                    </tr>
+    `;
+
+    tableBlog.appendChild(newRow);
+
+    const btnDelete = document.querySelector(`[data-id = "${blog.id}"]`);
+    deleteBlog(btnDelete as HTMLButtonElement);
+
+    // const btnEdit = document.querySelector(`[data-edit-id = "${blog.id}"]`);
+    // editBlog(btnEdit as HTMLButtonElement);
+    getDataEdit();
+  }
+};
+
+const renderBlog = (data: IBlog[]) => {
+  const tbody = document.querySelector("#tableBlog tbody");
+  if (tbody) {
+    data.forEach((blog, index) => {
+      tbody.innerHTML += `
+            <tr>
+                        <th >${blog.id}</th>
+                        <th >${blog.title}</th>
+                        <th >${blog.author}</th>
+                        <th >${blog.content}</th>
+                        <th >
+                        <button class = "btn btn-warning btn-edit" 
+                        data-edit-id="${blog.id}"
+                        data-title = "${blog.title}"
+                        data-author = "${blog.author}"
+                        data-content = "${blog.content}" 
+                        data-bs-toggle="modal"
+                        data-bs-target="#modalEditBlog">
+                        Edit
+                        </button>
+                        <button class = "btn btn-danger btn-delete" data-id="${blog.id}">
+                        Delete
+                        </button>
+                        </th>
+                    </tr>
+            `;
+    });
+  }
+};
+
+const fetchBlogs = async () => {
+  const res = await fetch("http://localhost:8000/blogs");
+  const data = (await res.json()) as IBlog[];
+
+  renderBlog(data);
+};
+
+fetchBlogs().then(() => {
+  attachActionDelete();
+  getDataEdit();
+});
+
+createBlog();
+
+export { IBlog, reloadTable };
