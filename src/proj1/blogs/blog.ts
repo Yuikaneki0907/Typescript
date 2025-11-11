@@ -1,6 +1,6 @@
 import { createBlog } from "./blog.create.js";
 import { attachActionDelete, deleteBlog } from "./blog.delete.js";
-import { editBlog, getDataEdit } from "./blog.edit.js";
+import { editBlog, getDataEdit, handleUpdateBlog } from "./blog.edit.js";
 
 interface IBlog {
   id: number;
@@ -38,9 +38,9 @@ const reloadTable = (blog: IBlog) => {
     const btnDelete = document.querySelector(`[data-id = "${blog.id}"]`);
     deleteBlog(btnDelete as HTMLButtonElement);
 
-    // const btnEdit = document.querySelector(`[data-edit-id = "${blog.id}"]`);
-    // editBlog(btnEdit as HTMLButtonElement);
-    getDataEdit();
+    const btnEdit = document.querySelector(`[data-edit-id = "${blog.id}"]`);
+    getDataEdit(btnEdit as HTMLButtonElement);
+
   }
 };
 
@@ -83,9 +83,10 @@ const fetchBlogs = async () => {
 
 fetchBlogs().then(() => {
   attachActionDelete();
-  getDataEdit();
+  handleUpdateBlog();
 });
 
 createBlog();
+editBlog();
 
 export { IBlog, reloadTable };

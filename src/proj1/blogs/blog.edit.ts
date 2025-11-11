@@ -1,38 +1,29 @@
-import { deleteBlog } from "./blog.delete.js";
 import { IBlog, reloadTable } from "./blog.js";
 
-const getDataEdit = () => {
-  const btnEdit = document.querySelectorAll(".btn-edit");
-  if (btnEdit) {
-    btnEdit.forEach((btn, index) => {
-      btn.addEventListener("click", () => {
-        const inpId = document.getElementById(
-          "inpId-edit"
-        )! as HTMLButtonElement;
-        const inpTitle = document.getElementById(
-          "inpTitle-edit"
-        )! as HTMLInputElement;
-        const inpAuthor = document.getElementById(
-          "inpAuthor-edit"
-        )! as HTMLInputElement;
-        const inpContent = document.getElementById(
-          "inpContent-edit"
-        )! as HTMLInputElement;
+const getDataEdit = (btn: HTMLButtonElement) => {
+  btn.addEventListener("click", () => {
+    const inpId = document.getElementById("inpId-edit")! as HTMLButtonElement;
+    const inpTitle = document.getElementById(
+      "inpTitle-edit"
+    )! as HTMLInputElement;
+    const inpAuthor = document.getElementById(
+      "inpAuthor-edit"
+    )! as HTMLInputElement;
+    const inpContent = document.getElementById(
+      "inpContent-edit"
+    )! as HTMLInputElement;
 
-        inpId.value = btn.getAttribute("data-edit-id")!;
-        inpTitle.value = btn.getAttribute("data-title")!;
-        inpAuthor.value = btn.getAttribute("data-author")!;
-        inpContent.value = btn.getAttribute("data-content")!;
-      });
-      editBlog(btn as HTMLButtonElement);
-    });
-  }
+    inpId.value = btn.getAttribute("data-edit-id")!;
+    inpTitle.value = btn.getAttribute("data-title")!;
+    inpAuthor.value = btn.getAttribute("data-author")!;
+    inpContent.value = btn.getAttribute("data-content")!;
+  });
 };
 
-const editBlog = (btnEdit: HTMLButtonElement) => {
+const editBlog = () => {
   const btnEditBlog = document.querySelector(
     "#btnEditBlog"
-  ) as HTMLButtonElement;
+  ) as HTMLButtonElement;//
 
   if (btnEditBlog) {
     btnEditBlog.addEventListener("click", async () => {
@@ -68,23 +59,11 @@ const editBlog = (btnEdit: HTMLButtonElement) => {
       });
 
       const res: IBlog = await rawData.json();
-      console.log(res);
+      // console.log(res);
 
-      //close modal
-      //@ts-ignore
-      const myModal = bootstrap.Modal.getOrCreateInstance("#modalEditBlog", {
-        keyboard: false,
-      });
-      myModal.hide();
-
-      // deleteBlog(btnEdit);
-      // reloadTable(res);
-
-      // window.location.reload();
-
-      const row = btnEdit.closest('tr');
-      if(row){
-        row.innerHTML = `
+      const btnEditElement = document.querySelector(`[data-edit-id="${id}"]`)! ;
+      const rowEdit = btnEditElement.closest("tr");
+      if(rowEdit) rowEdit.innerHTML = `
     <tr>
                         <th >${id}</th>
                         <th >${title}</th>
@@ -101,13 +80,27 @@ const editBlog = (btnEdit: HTMLButtonElement) => {
                         </th>
                     </tr>
     `;
-      }
+
+      // reloadTable(res)
+
+      //close modal
+      //@ts-ignore
+      const myModal = bootstrap.Modal.getOrCreateInstance("#modalEditBlog", {
+        keyboard: false,
+      });
+      myModal.hide();
+      // window.location.reload();
     });
   }
 };
 
-// const updateDataEdit = (btn: HTMLButtonElement) => {
-  
-// }
+const handleUpdateBlog = () => {
+  const btnEdit = document.querySelectorAll(".btn-edit");
+  if (btnEdit) {
+    btnEdit.forEach((btn, index) => {
+      getDataEdit(btn as HTMLButtonElement);
+    });
+  }
+};
 
-export { editBlog, getDataEdit };
+export { editBlog, getDataEdit, handleUpdateBlog };

@@ -1,6 +1,6 @@
 import { createBlog } from "./blog.create.js";
 import { attachActionDelete, deleteBlog } from "./blog.delete.js";
-import { getDataEdit } from "./blog.edit.js";
+import { editBlog, getDataEdit, handleUpdateBlog } from "./blog.edit.js";
 const reloadTable = (blog) => {
     const tableBlog = document.querySelector("#tableBlog tbody");
     const newRow = document.createElement("tr");
@@ -25,9 +25,8 @@ const reloadTable = (blog) => {
         tableBlog.appendChild(newRow);
         const btnDelete = document.querySelector(`[data-id = "${blog.id}"]`);
         deleteBlog(btnDelete);
-        // const btnEdit = document.querySelector(`[data-edit-id = "${blog.id}"]`);
-        // editBlog(btnEdit as HTMLButtonElement);
-        getDataEdit();
+        const btnEdit = document.querySelector(`[data-edit-id = "${blog.id}"]`);
+        getDataEdit(btnEdit);
     }
 };
 const renderBlog = (data) => {
@@ -66,7 +65,8 @@ const fetchBlogs = async () => {
 };
 fetchBlogs().then(() => {
     attachActionDelete();
-    getDataEdit();
+    handleUpdateBlog();
 });
 createBlog();
+editBlog();
 export { reloadTable };
